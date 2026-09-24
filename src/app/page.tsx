@@ -1,11 +1,11 @@
 import Banner from "@/components/homepage/Banner";
-import Lifts from "@/components/homepage/Lifts";
+import Workouts from "@/components/homepage/Workouts";
 
 export default function page() {
   return (
     <div>
       <Banner />
-      <Lifts />
+      <Workouts />
     </div>
   )
 }
