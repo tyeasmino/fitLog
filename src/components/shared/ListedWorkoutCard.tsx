@@ -1,7 +1,8 @@
 import { IWorkout } from "@/types/workouts.type";
 import Image from "next/image";
 import Link from "next/link";
-import { FaCheck, FaRegClock, FaRegStar } from "react-icons/fa6";
+import { FaRegClock, FaRegStar } from "react-icons/fa6";
+import MarkAsDoneButton from "../my-plans/MarkAsDoneButton";
 import RemoveWorkoutButton from "../my-plans/RemoveWorkoutButton";
 
 interface IListedWorkoutCardProps {
@@ -78,13 +79,7 @@ export default function ListedWorkoutCard({
 
                 {/* Mark as Done - Today's Plan only */}
                 {showMarkAsDone && (
-                    <button
-                        type="button"
-                        className="flex items-center gap-1.5 rounded-full bg-[#C2F800] px-3.5 py-1.5 text-[10px] font-bold text-black transition-all hover:bg-[#D4FF4D]"
-                    >
-                        <FaCheck className="h-2.5 w-2.5" />
-                        Mark as Done
-                    </button>
+                    <MarkAsDoneButton workout={workout} />
                 )}
 
                 {/* Remove */}

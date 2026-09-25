@@ -6,12 +6,17 @@ export const WorkoutsContext = createContext({});
 export default function WorkoutsProvider({ children }: { children: ReactNode }) {
     const [todaysPlan, setTodaysPlan] = useState([]);
     const [saveForLater, setSaveForLater] = useState([]);
+    const [completedWorkouts, setCompletedWorkouts] = useState([]);
 
     const sharedData = {
-        todaysPlan, setTodaysPlan, saveForLater, setSaveForLater
+        todaysPlan, setTodaysPlan,
+        saveForLater, setSaveForLater,
+        completedWorkouts, setCompletedWorkouts
     }
 
     return (
-        <WorkoutsContext.Provider value={sharedData}>{children}</WorkoutsContext.Provider>
+        <WorkoutsContext.Provider value={sharedData}>
+            {children}
+        </WorkoutsContext.Provider>
     )
 }
