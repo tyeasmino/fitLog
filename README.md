@@ -4,7 +4,7 @@ FitLog is a dark, responsive workout management web application that helps users
 
 ## 🚀 Live Demo
 
-[Live Demo](#)
+[Live Demo](https://fitlog-nu-jade.vercel.app/)
 
 ## 📌 Features
 
