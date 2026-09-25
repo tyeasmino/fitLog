@@ -12,17 +12,16 @@ export default function WorkoutCard({ workout }: IWorkoutCardProps) {
     return (
         <Link
             href={`/workouts/${workout.id}`}
-            key={workout.id}
             className="group overflow-hidden rounded-2xl border border-white/10 bg-[#20242E] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl"
         >
             {/* Image */}
             <div className="relative h-70 overflow-hidden">
                 <Image
                     src={workout.image}
-                    alt="Lift Image"
-                    width={800}
-                    height={600}
-                    className="object-cover"
+                    alt={workout.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
             </div>
 

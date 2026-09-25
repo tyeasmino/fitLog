@@ -4,8 +4,9 @@ import Link from "next/link";
 
 import AddToTodaysPlanButton from "@/components/workoutDetails/AddToTodaysPlanButton";
 import SaveForLaterButton from "@/components/workoutDetails/SaveForLaterButton";
-import { ILift } from "@/types/workouts.type";
+import { IWorkout } from "@/types/workouts.type";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { BiCheck, BiDumbbell, BiListCheck, BiStar } from "react-icons/bi";
 import { BsArrowLeft, BsStar } from "react-icons/bs";
 import { FiTarget } from "react-icons/fi";
@@ -18,7 +19,7 @@ interface IWorkoutDetailsPageProps {
     }>;
 }
 
-const getLifts = async (): Promise<ILift[]> => {
+const getWorkouts = async (): Promise<IWorkout[]> => {
     const response = await fetch("https://api.abcz.workers.dev/api/fitlog");
     const data = await response.json();
     return data;
@@ -29,11 +30,15 @@ export default async function WorkoutDetailsPage({
 }: IWorkoutDetailsPageProps) {
     const { id } = await params;
 
-    const workoutsData = await getLifts();
+    const workoutsData = await getWorkouts();
 
     const workout = workoutsData.find(
-        (workout: ILift) => String(workout.id) === String(id)
+        (workout: IWorkout) => String(workout.id) === String(id)
     );
+
+    if (!workout) {
+        notFound()
+    }
 
     return (
         <main className="min-h-screen bg-[#0d0f13] px-5 py-8 text-white md:px-8 lg:px-12">

@@ -1,11 +1,13 @@
-import BannerImg from "@/assets/banner.png"
-import Image from "next/image"
+import BannerImg from "@/assets/banner.png";
+import Image from "next/image";
+import Link from "next/link";
+import { FaArrowDown } from "react-icons/fa";
 
 export default function Banner() {
     return (
         <section className="m-4 sm:m-6 md:m-8 lg:m-10">
             <div className="min-h-[50vh] overflow-hidden rounded-2xl border border-[#222630] bg-[#15171D] p-5 sm:p-7 md:p-8 lg:p-12 xl:p-16">
-                <div className="flex flex-col items-center gap-8 sm:gap-10 md:flex-row-reverse md:items-center md:gap-8 lg:gap-12 xl:gap-16 md:justify-between">
+                <div className="flex flex-col items-center gap-8 sm:gap-10 md:flex-row-reverse md:items-center md:justify-between md:gap-8 lg:gap-12 xl:gap-16">
 
                     {/* Image */}
                     <div className="w-full shrink-0 md:w-[38%] lg:w-[25%]">
@@ -20,7 +22,7 @@ export default function Banner() {
                     {/* Content */}
                     <div className="flex w-full flex-col md:w-[62%] lg:w-[50%]">
                         <span className="text-xs font-semibold uppercase tracking-wide text-[#C2F800] sm:text-sm">
-                            workout library
+                            Workout Library
                         </span>
 
                         <h1 className="mt-2 text-3xl font-bold uppercase leading-[1.05] text-white sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl">
@@ -33,15 +35,17 @@ export default function Banner() {
                             work add up.
                         </p>
 
-                        <button
-                            type="button"
-                            className="mt-6 w-fit rounded-md bg-[#C2F800] px-5 py-2 text-sm font-bold text-black transition-colors hover:bg-[#d4ff4d] sm:px-6 sm:py-2.5 md:mt-7 lg:px-8 lg:py-3 lg:text-lg"
+                        {/* CTA */}
+                        <Link
+                            href="#library"
+                            className="mt-6 flex w-fit items-center gap-2 rounded-md bg-[#C2F800] px-5 py-2 text-sm font-bold uppercase text-black transition-colors hover:bg-[#d4ff4d] sm:px-6 sm:py-2.5 md:mt-7 lg:px-8 lg:py-3 lg:text-lg"
                         >
                             Browse Workouts
-                        </button>
+                            <FaArrowDown className="text-xs" />
+                        </Link>
                     </div>
                 </div>
             </div>
         </section>
-    )
+    );
 }

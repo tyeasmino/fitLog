@@ -9,16 +9,15 @@ const getLifts = async () => {
 
 export default async function Workouts() {
 
-    const liftsData = await getLifts();
-    console.log(liftsData, "liftsData");
+    const workoutsData = await getLifts();
 
     return (
-        <div className="text-white p-4 md:p-10">
+        <div id="library" className="text-white p-4 md:p-10">
             <h3 className="uppercase text-3xl font-semibold">The library</h3>
             <p className="text-[#9CA3AF] mb-10">Twelve lifts covering every major muscle group.</p>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {liftsData.map((workout: IWorkout, ind: number) => {
+                {workoutsData.map((workout: IWorkout, ind: number) => {
                     return <WorkoutCard key={ind} workout={workout} />
                 })}
             </div>

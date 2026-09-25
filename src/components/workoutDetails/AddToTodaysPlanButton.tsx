@@ -4,16 +4,25 @@ import { WorkoutsContext } from "@/context/WorkoutsContext";
 import { IWorkout } from "@/types/workouts.type";
 import { useContext } from "react";
 import { FaRegCalendarPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function AddToTodaysPlanButton({ workout }: { workout: IWorkout }) {
     const { todaysPlan, setTodaysPlan } = useContext(WorkoutsContext)
 
     const handleAddToTodaysPlan = () => {
-        console.log("add to today's plan btn triggered ", workout);
+        const alreadyAdded = todaysPlan.some(
+            (item) => item.id === workout.id
+        );
+
+        if (alreadyAdded) {
+            toast.info(`"${workout.name}" is already in today's plan`);
+            return;
+        }
 
         setTodaysPlan([...todaysPlan, workout]);
-        alert(`You have added "${workout.name}"`);
-    }
+
+        toast.success(`"${workout.name}" added to today's plan`);
+    };
 
     return (
         <button
